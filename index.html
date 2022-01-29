@@ -5,83 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- API from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Integrating CSS and JavaScript's files -->
 <link rel="stylesheet" href="style.css">
-<script>
-    function appendOperation (operation) {
-        let container = document.getElementById("display");
-        let c = container.innerHTML.slice(0, -1);
-        if (container.innerHTML.endsWith('r')) {
-            container.innerHTML = '';
-        }
-        else {
-            document.getElementById("display").innerHTML += operation;
-        }
-      }
-    function deleteAll () {
-        let container = document.getElementById("display");
-        container.innerHTML =''
-    }
-    function deleteLast () {
-        let container = document.getElementById("display");
-        if (container.innerHTML.endsWith('r')) {
-            container.innerHTML = '';
-        }
-        else if (container.innerHTML.endsWith(' ')) {
-            container.innerHTML = container.innerHTML.slice(0, -3);
-        }
-        else {
-            container.innerHTML = container.innerHTML.slice(0, -1);
-        }
-    }
-    function calculateResult () {
-        let container = document.getElementById("display");
-        let result = eval(container.innerHTML);
+<script src="script.js"></script>
 
-        if (result > 9999999999 || result < -9999999999) {
-            result = "Error";
-            container.innerHTML = result;
-        }
-        else if (result % 1 != 0) {
-            let a = result.toFixed(3);
-            container.innerHTML = a;
-        }
-        else {
-            container.innerHTML = result;
-        }
-    }
-
-</script>
 </head>
+
 <body>
+
+        <!-- Table with "buttons" that activates the JavaScript's functions -->
     <table>
         <div id="display"></div>
+
+            <!-- First row -->
         <tr>
             <td onclick="appendOperation('(')" class="highlight">(</td>
             <td onclick="appendOperation(')')" class="highlight">)</td>
             <td onclick="deleteAll()" class="highlight">C</td>
             <td onclick="deleteLast()" id="deleteButton" class="highlight">DEL</td>
         </tr>
+
+            <!-- Second row -->
         <tr>
             <td onclick="appendOperation(7)">7</td>
             <td onclick="appendOperation(8)">8</td>
             <td onclick="appendOperation(9)">9</td>
             <td onclick="appendOperation(' / ')" class="highlight">/</td>
         </tr>
+
+            <!-- Third row -->
         <tr>
             <td onclick="appendOperation(4)">4</td>
             <td onclick="appendOperation(5)">5</td>
             <td onclick="appendOperation(6)">6</td>
             <td onclick="appendOperation(' * ')" class="highlight">x</td>
         </tr>
+
+            <!-- Fourth row -->
         <tr>
             <td onclick="appendOperation(1)">1</td>
             <td onclick="appendOperation(2)">2</td>
             <td onclick="appendOperation(3)">3</td>
             <td onclick="appendOperation(' - ')" class="highlight">-</td>
         </tr>
+
+            <!-- Fifth row -->
         <tr>
             <td onclick="appendOperation(0)">0</td>
             <td onclick="appendOperation('.')">,</td>
