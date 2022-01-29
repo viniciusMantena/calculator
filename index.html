@@ -16,57 +16,48 @@
         if (container.innerHTML.endsWith('r')) {
             container.innerHTML = '';
         }
-        if (c.endsWith('-') || operation === ' - ') {
-            return;
+        else {
+            document.getElementById("display").innerHTML += operation;
         }
-        document.getElementById("display").innerHTML += operation;
-    }
+      }
     function deleteAll () {
         let container = document.getElementById("display");
-        container.innerHTML ='0'
+        container.innerHTML =''
     }
     function deleteLast () {
         let container = document.getElementById("display");
-        if (container.innerHTML.lenght == 1) {
-            container.innerHTML = '0';
-        }
         if (container.innerHTML.endsWith('r')) {
-            container.innerHTML = '0';
+            container.innerHTML = '';
+        }
+        else if (container.innerHTML.endsWith(' ')) {
+            container.innerHTML = container.innerHTML.slice(0, -3);
         }
         else {
-            if (container.innerHTML.endsWith(' ')) {
-                container.innerHTML = container.innerHTML.slice(0, -3);
-            }
-            else {
-                container.innerHTML = container.innerHTML.slice(0, -1);
-            }
+            container.innerHTML = container.innerHTML.slice(0, -1);
         }
     }
     function calculateResult () {
         let container = document.getElementById("display");
         let result = eval(container.innerHTML);
+
         if (result > 9999999999 || result < -9999999999) {
             result = "Error";
             container.innerHTML = result;
         }
-        else {
-            if (result % 1 != 0) {
-                let a = result.toFixed(3);
-                container.innerHTML = a;
-            }
-            else {
-                container.innerHTML = result;
-            }
+        else if (result % 1 != 0) {
+            let a = result.toFixed(3);
+            container.innerHTML = a;
         }
-
+        else {
+            container.innerHTML = result;
+        }
     }
+
 </script>
 </head>
 <body>
     <table>
-        <div id="display">
-            0
-        </div>
+        <div id="display"></div>
         <tr>
             <td onclick="appendOperation('(')" class="highlight">(</td>
             <td onclick="appendOperation(')')" class="highlight">)</td>
